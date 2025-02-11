@@ -47,7 +47,7 @@ After the variant calling steps, use the flowing code to estimation ancestry:
 ```
 
 
-Result should similar like thgis:
+Result should be similar like thgis:
 
 ```bash
 Ancestry       Proportion   N_SNPs    Estimation_Corr (95% CI)
