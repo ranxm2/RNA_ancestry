@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # create a new directory for RNA_map
-cd /projects/compbio/users/xran2/tool/RNA_map
+mkdir -p tool
+cd tool
 
 # #-------------------------------------------#
 # #                                           #
@@ -33,20 +34,28 @@ cd /projects/compbio/users/xran2/tool/RNA_map
 wget https://cloud.biohpc.swmed.edu/index.php/s/oTtGWbWjaxsQ2Ho/download
 unzip download
 #add /projects/compbio/users/xran2/tool/RNA_map/hisat2-2.2.1 to PATH
-export PATH=$PATH:/projects/compbio/users/xran2/tool/RNA_map/hisat2-2.2.1
+export PATH="$(pwd)/hisat2-2.2.1:$PATH"
 hisat2 --version
+
 
 # Download featureCounts
 wget https://github.com/ShiLab-Bioinformatics/subread/releases/download/2.0.2/subread-2.0.2-Linux-x86_64.tar.gz
 tar -xzvf subread-2.0.2-Linux-x86_64.tar.gz
-export PATH=$PATH:/projects/compbio/users/xran2/tool/RNA_map/subread-2.0.2-Linux-x86_64/bin
+export PATH="$(pwd)/subread-2.0.2-Linux-x86_64/bin:$PATH"
 featureCounts -v
 
 # Download samtools
 wget https://github.com/samtools/samtools/releases/download/1.20/samtools-1.20.tar.bz2
 tar -xjvf samtools-1.20.tar.bz2
-export PATH=$PATH:/projects/compbio/users/xran2/tool/RNA_map/samtools-1.20
+export PATH="$(pwd)/samtools-1.20:$PATH"
 samtools 
+
+wget https://github.com/shenwei356/seqkit/releases/latest/download/seqkit_linux_amd64.tar.gz
+tar -xvzf seqkit_linux_amd64.tar.gz.1
+chmod +x seqkit
+export PATH="$(pwd):$PATH"
+
+
 
 #-------------------------------------------#
 #                                           #
@@ -58,10 +67,12 @@ samtools
 # Human reference (GRCh38) 
 wget https://genome-idx.s3.amazonaws.com/hisat/grch38_genome.tar.gz
 tar -xzvf grch38_genome.tar.gz
-export PATH=$PATH:/projects/compbio/users/xran2/tool/RNA_map/hisat2-2.2.1 # add hisat2 to PATH
+
 cd grch38
 ./make_grch38.sh
+hisat2-build genome.fa genome
 cd ..
+
 
 # Download Human reference gtf file
 # Version 106
@@ -76,3 +87,5 @@ gunzip Homo_sapiens.GRCh38.106.gtf.gz
 awk '$3 == "gene" {print $10 "\t" $14}' Homo_sapiens.GRCh38.106.gtf | sed 's/"//g' | sed 's/;//g' | sort > gene_id_name_map_sorted.txt
 # awk '$3 == "gene" {print $10 "\t" $14}' Homo_sapiens.GRCh38.113.gtf | sed 's/"//g' | sed 's/;//g' | sort > gene_id_name_map_sorted.txt
 
+
+cd ..
