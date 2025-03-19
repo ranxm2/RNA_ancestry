@@ -1,20 +1,17 @@
 #!/bin/bash
 
-# load the 
-
-
 # Directories
 FASTQ_DIR="./data"
-RESULT_DIR="result_mutil"
-FA_DIR="result_mutil/01-FA"
-SAM_DIR="result_mutil/02-SAM"
-SAM_SORT_DIR="result_mutil/02-SAM_SORT"
-VCF_DIR="result_mutil/04-VCF"
+RESULT_DIR="result"
+FA_DIR="result/01-FA"
+SAM_DIR="result/02-SAM"
+SAM_SORT_DIR="result/03-SAM_SORT"
+VCF_DIR="result/04-VCF"
 
 mkdir -p ${RESULT_DIR} ${FA_DIR} ${SAM_DIR} ${SAM_SORT_DIR} ${VCF_DIR} 
 
-
-BASE_NAME="19291X165_220223_A00421_0420_AHGVVMDSX3_S42_L003"
+# test for input
+# BASE_NAME="demo"
 echo "Processing File: ${BASE_NAME}"
 
 # Define the FastQ files (R1 and R2)

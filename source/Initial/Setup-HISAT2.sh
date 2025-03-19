@@ -89,3 +89,4 @@ awk '$3 == "gene" {print $10 "\t" $14}' Homo_sapiens.GRCh38.106.gtf | sed 's/"//
 
 
 cd ..
+chmod +x ./source/map_HISAT2.sh 
