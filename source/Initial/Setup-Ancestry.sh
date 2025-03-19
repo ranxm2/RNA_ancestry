@@ -6,7 +6,23 @@
 #                                           #
 #-------------------------------------------#
 
+# please down the plink from the website and unzip it into the tool folder
 
+# also need to add the path to the system path
+
+# this can be checked by running the following command
+plink version
+
+
+
+
+
+
+#-------------------------------------------#
+#                                           #
+#           Step 2: build reference           #
+#                                           #
+#-------------------------------------------#
 
 
 
@@ -15,6 +31,10 @@ cd /projects/compbio/users/xran2/Courtney/RNAseq_all/ref
 
 # Run PLINK command for each chromosome
 plink --bfile PLINK/ALL.chr${CHR}.GRCh38 --keep PLINK/allref1010_ids.txt --make-bed --out 1000Gene_ref/chr${CHR}
+
+
+
+
 
 export PATH=$PATH:/projects/jmschil/
 

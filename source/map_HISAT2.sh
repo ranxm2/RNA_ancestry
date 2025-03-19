@@ -12,12 +12,13 @@ mkdir -p ${RESULT_DIR} ${FA_DIR} ${SAM_DIR} ${SAM_SORT_DIR} ${VCF_DIR}
 
 # test for input
 # BASE_NAME="demo"
+SUID="S001" # this is the sample ID, user can change it to any name
 echo "Processing File: ${BASE_NAME}"
 
 # Define the FastQ files (R1 and R2)
 fq1=${FASTQ_DIR}/${BASE_NAME}_R1_001.fastq.gz
 fq2=${FASTQ_DIR}/${BASE_NAME}_R2_001.fastq.gz
-SUID="S001"
+
 
 echo "SUID: ${SUID}"
 echo "Processing: ${BASE_NAME}"
@@ -40,7 +41,7 @@ seconds=$((elapsed_time % 60))
 echo "Step 1 finish at: $(date)"
 echo "Step 1 used:  $hours hour(s), $minutes minute(s), and $seconds second(s)."
 
-# HISAT2 index path
+
 
 
 
@@ -51,11 +52,12 @@ echo "-------------------------------------------------"
 echo "Step 2 start at: $(date)"
 start_time=$(date +%s)
 
-HISAT2_INDEX="tool/grch38"
+# HISAT2 index path
+HISAT2_INDEX="./tool/grch38/genome"
 hisat2 -f -x ${HISAT2_INDEX} \
         -1 ${FA_DIR}/${SUID}_1.fa.gz \
         -2 ${FA_DIR}/${SUID}_2.fa.gz \
-        -S ${SAM_DIR}/${SUID}.sam \
+        -S ${SAM_DIR}/${SUID}.sam 
                                 
 end_time=$(date +%s)
 elapsed_time=$((end_time - start_time))
@@ -96,8 +98,7 @@ echo "------- Step 4: VCF file ------------------------"
 echo "-------------------------------------------------"
 echo "Step 4 start at: $(date)"
 start_time=$(date +%s)
-REFERENCE_GENOME="/projects/jmschil/RNAseq_all/00-Index/GRCh38.fna"
-
+REFERENCE_GENOME="./tool/grch38/GRCh38.fna"
 
 bcftools mpileup \
     -f ${REFERENCE_GENOME} \
