@@ -47,19 +47,16 @@ After the variant calling steps, user need to specify the reference genome for t
 
 Affer the reference genome is built, user can use the ADMIXTURE to estimate the ancestry proportion. Details of the ADMIXTURE can be found in the [ADMIXTURE](https://dalexander.github.io/admixture/). 
 
-The code to run the ADMIXTURE is in `source/Ancestry/Ancestry.sh`. User can run the following code to estimate the ancestry proportion:
-
+The code to run the ADMIXTURE is in `source/estimate.sh`. User can run the following code to estimate the ancestry proportion:
 
 
 ## Result Output
 
-Result should be similar like thgis:
+Result of the estimated result should be in this format:
 
 ```bash
 Ancestry       Proportion   N_SNPs    
 African        75.5%        240001    
 European       13.2%        240001    
 Asian          11.3%        240001    
-
-
 ```
