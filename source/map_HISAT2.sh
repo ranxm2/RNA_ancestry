@@ -98,7 +98,10 @@ echo "------- Step 4: VCF file ------------------------"
 echo "-------------------------------------------------"
 echo "Step 4 start at: $(date)"
 start_time=$(date +%s)
-REFERENCE_GENOME="./tool/grch38/GRCh38.fna"
+REFERENCE_GENOME="./tool/bcftool/GCF_000001405.26_GRCh38_genomic.fna"
+
+git add source/Step_1_main.sh
+
 
 bcftools mpileup \
     -f ${REFERENCE_GENOME} \
