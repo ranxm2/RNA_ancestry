@@ -16,7 +16,7 @@ This project addresses a critical gap in cancer genetics research where germline
   - Validated across African, European, and Asian genetic ancestry
 
 ## Pipeline Overview
-![Pipeline Overview](images/overview.jpg)
+![Pipeline Overview](images/pipeline-v2-1.svg)
 
 ## Tools Required
 - SeqKit
