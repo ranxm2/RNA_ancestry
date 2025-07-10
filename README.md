@@ -1,4 +1,4 @@
-# RNA Ancestry Project
+# An analytic pipeline to obtain reliable genetic ancestry estimates from tumor-derived RNA sequencing data 
 A robust pipeline for inferring genetic ancestry from tumor RNA-seq data when germline DNA is unavailable.
 
 ## Citation
